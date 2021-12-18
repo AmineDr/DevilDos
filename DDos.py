@@ -67,7 +67,7 @@ def dos2():
 
 def usage():
 	print ('''
-	usage : python3 hammer.py [-s] [-p] [-t]
+	usage : python3 DDos.py [-s] [-p] [-t]
 	-h : help
 	-s : server ip
 	-p : port default 80
